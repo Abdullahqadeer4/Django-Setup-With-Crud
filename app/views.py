@@ -1,12 +1,43 @@
 from django.shortcuts import render
-
 from django.http import HttpResponse
 
+from rest_framework import generics
+from app.models import items,location
+from app.serializers import itemsSerializer,locationSerializer
 # def home(request):
 #     return render(request,"app/index.html")
 
 
-#Write all logical code here
+# #Write all logical code here
+
+
+
+class itemlist(generics.ListCreateAPIView):
+    serializer_class=itemsSerializer
+     
+    def get_queryset(self):
+        queryset=items.objects.all()
+        location=self.request.query_params.get('location')
+        if location is not None:
+            queryset=queryset.filter(itemlocation=location)
+        return queryset
+        
+
+
+class locationlist(generics.ListCreateAPIView):
+    serializer_class=locationSerializer
+    queryset=location.objects.all()
+
+
+class locationdetails(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class=locationSerializer
+    queryset=location.objects.all()
+    
+    
+class itemdetails(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class=itemsSerializer
+    queryset=items.objects.all()
+
 
 def home(request):
      peoples=[

@@ -16,3 +16,5 @@ from app.models import *
 admin.site.register(person)
 admin.site.register(Empl)
 admin.site.register(car)
+admin.site.register(items)
+admin.site.register(location)

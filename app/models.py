@@ -55,6 +55,26 @@ class car(models.Model):
     def __str__(self):
         return self.carname
     
+    
+
+
+class location(models.Model):
+    locationname=models.CharField(max_length=30,unique=True)
+    ltype=models.CharField(max_length=50)
+    lserial=models.IntegerField()
+    
+    def __str__(self):
+        return self.locationname
+    
+class items(models.Model):
+    iname=models.CharField(max_length=30)
+    itype=models.CharField(max_length=50)
+    iserial=models.IntegerField()
+    itemlocation=models.ForeignKey(location,on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.iname
+    
     #After making a model hit command python manage.py makemigrations
     #python manage.py migrate
     #migrations file will be created

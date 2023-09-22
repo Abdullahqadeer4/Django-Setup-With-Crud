@@ -37,14 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app'
+    'app',
+    'rest_framework',
 ]
 
 
-# EXTERNAL_APPS=[
-#     'app'
-# ]
-# INSTALLED_APPS=INSTALLED_APPS+EXTERNAL_APPS
 
 
 MIDDLEWARE = [
@@ -138,4 +135,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
             
 
 
-#CRUD => creat,read,update,delete
+#CRUD => creat,read,update,deletekk
